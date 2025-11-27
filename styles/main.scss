@@ -1,0 +1,8 @@
+// Main SCSS entry point for Perfuchic
+// This file imports all partial SCSS files
+
+@use 'variables';
+@use 'layout';
+@use 'form';
+@use 'home';
+@use 'resultado';

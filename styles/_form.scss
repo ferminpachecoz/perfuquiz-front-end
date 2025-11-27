@@ -1,0 +1,339 @@
+@use 'variables' as *;
+
+// Form Container
+.form-container {
+  background-color: $color-surface;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-md;
+  padding: $spacing-xl;
+  
+  @media (min-width: $breakpoint-md) {
+    padding: $spacing-2xl;
+  }
+}
+
+// Progress Bar
+.progress-bar {
+  margin-bottom: $spacing-xl;
+  
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-sm;
+  }
+  
+  &__step {
+    font-size: 0.875rem;
+    color: $color-text-light;
+    font-weight: 500;
+  }
+  
+  &__percentage {
+    font-size: 0.875rem;
+    color: $color-primary-dark;
+    font-weight: 600;
+  }
+  
+  &__track {
+    height: 8px;
+    background-color: $color-border-light;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  &__fill {
+    height: 100%;
+    background: linear-gradient(90deg, $color-primary, $color-primary-dark);
+    border-radius: 4px;
+    transition: width 0.4s ease;
+  }
+  
+  &__labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: $spacing-sm;
+    gap: $spacing-xs;
+  }
+  
+  &__label {
+    font-size: 0.7rem;
+    color: $color-text-muted;
+    text-align: center;
+    flex: 1;
+    
+    &--active {
+      color: $color-primary-dark;
+      font-weight: 500;
+    }
+    
+    &--completed {
+      color: $color-success;
+    }
+  }
+}
+
+// Step Title
+.step-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: $color-text;
+  margin-bottom: $spacing-lg;
+  
+  @media (min-width: $breakpoint-md) {
+    font-size: 1.5rem;
+  }
+}
+
+// Question Group
+.question-group {
+  margin-bottom: $spacing-xl;
+  
+  &:last-of-type {
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.question-label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  color: $color-text;
+  margin-bottom: $spacing-md;
+  line-height: 1.5;
+}
+
+// Radio Options
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.option-item {
+  position: relative;
+  
+  input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    
+    &:checked + .option-label {
+      background-color: $color-primary-light;
+      border-color: $color-primary;
+      
+      &::before {
+        background-color: $color-primary;
+        border-color: $color-primary;
+      }
+      
+      &::after {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    &:focus + .option-label {
+      outline: 2px solid $color-primary;
+      outline-offset: 2px;
+    }
+  }
+  
+  .option-label {
+    display: flex;
+    align-items: center;
+    padding: $spacing-md $spacing-lg;
+    background-color: $color-surface;
+    border: 2px solid $color-border;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+    color: $color-text;
+    
+    &:hover {
+      border-color: $color-primary;
+      background-color: rgba($color-primary, 0.05);
+    }
+    
+    &::before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      border: 2px solid $color-border;
+      border-radius: 50%;
+      margin-right: $spacing-md;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      left: calc(#{$spacing-lg} + 6px);
+      width: 8px;
+      height: 8px;
+      background-color: white;
+      border-radius: 50%;
+      opacity: 0;
+      transform: scale(0);
+      transition: all 0.2s ease;
+    }
+  }
+}
+
+// Checkbox Options (for P13)
+.checkbox-list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.checkbox-item {
+  position: relative;
+  
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    
+    &:checked + .checkbox-label {
+      background-color: $color-primary-light;
+      border-color: $color-primary;
+      
+      &::before {
+        background-color: $color-primary;
+        border-color: $color-primary;
+      }
+      
+      &::after {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    &:focus + .checkbox-label {
+      outline: 2px solid $color-primary;
+      outline-offset: 2px;
+    }
+  }
+  
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    padding: $spacing-md $spacing-lg;
+    background-color: $color-surface;
+    border: 2px solid $color-border;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+    color: $color-text;
+    
+    &:hover {
+      border-color: $color-primary;
+      background-color: rgba($color-primary, 0.05);
+    }
+    
+    &::before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      border: 2px solid $color-border;
+      border-radius: $radius-sm;
+      margin-right: $spacing-md;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+    
+    &::after {
+      content: '✓';
+      position: absolute;
+      left: calc(#{$spacing-lg} + 4px);
+      font-size: 12px;
+      color: white;
+      opacity: 0;
+      transform: scale(0);
+      transition: all 0.2s ease;
+    }
+  }
+}
+
+// Navigation Buttons
+.form-navigation {
+  display: flex;
+  gap: $spacing-md;
+  margin-top: $spacing-xl;
+  padding-top: $spacing-lg;
+  border-top: 1px solid $color-border-light;
+}
+
+// Buttons
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-md $spacing-xl;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: $radius-md;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  &--primary {
+    background-color: $color-primary;
+    color: white;
+    flex: 1;
+    
+    &:hover:not(:disabled) {
+      background-color: $color-primary-dark;
+    }
+  }
+  
+  &--secondary {
+    background-color: transparent;
+    color: $color-text-light;
+    border: 2px solid $color-border;
+    
+    &:hover:not(:disabled) {
+      border-color: $color-text-light;
+      color: $color-text;
+    }
+  }
+  
+  &--large {
+    padding: $spacing-lg $spacing-2xl;
+    font-size: 1.1rem;
+  }
+}
+
+// Validation Error
+.validation-error {
+  color: $color-error;
+  font-size: 0.875rem;
+  margin-top: $spacing-sm;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  
+  &::before {
+    content: '⚠';
+  }
+}
+
+// Helper Text
+.helper-text {
+  font-size: 0.85rem;
+  color: $color-text-muted;
+  margin-top: $spacing-sm;
+  font-style: italic;
+}

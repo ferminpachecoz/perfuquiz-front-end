@@ -1,0 +1,83 @@
+@use 'variables' as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: $font-family;
+  background-color: $color-background;
+  color: $color-text;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding: $spacing-lg;
+  
+  @media (min-width: $breakpoint-md) {
+    padding: $spacing-2xl;
+  }
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  width: 100%;
+}
+
+// Header
+.header {
+  background-color: $color-surface;
+  border-bottom: 1px solid $color-border;
+  padding: $spacing-md $spacing-lg;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  
+  &__content {
+    max-width: $container-max-width;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  &__logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $color-primary-dark;
+    letter-spacing: -0.5px;
+    
+    span {
+      font-weight: 400;
+      color: $color-text-light;
+    }
+  }
+}
+
+// Footer
+.footer {
+  background-color: $color-surface;
+  border-top: 1px solid $color-border;
+  padding: $spacing-lg;
+  text-align: center;
+  
+  &__text {
+    font-size: 0.875rem;
+    color: $color-text-muted;
+  }
+}

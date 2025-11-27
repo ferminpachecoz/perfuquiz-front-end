@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/fermi/Documents/PerfuChic/PerfuQuiz/web-app-instructions/components/Layout/Header.js"],"sourcesContent":["\"use client\"\n\nimport Link from \"next/link\"\n\nexport default function Header() {\n  return (\n    <header className=\"header\">\n      <div className=\"header__content\">\n        <Link href=\"/\" className=\"header__logo\">\n          Perfuchic <span>Diagnóstico Capilar</span>\n        </Link>\n      </div>\n    </header>\n  )\n}\n"],"names":[],"mappings":";;;;;AAEA;AAFA;;;AAIe,SAAS;IACtB,qBACE,mTAAC;QAAO,WAAU;kBAChB,cAAA,mTAAC;YAAI,WAAU;sBACb,cAAA,mTAAC,4OAAI;gBAAC,MAAK;gBAAI,WAAU;;oBAAe;kCAC5B,mTAAC;kCAAK;;;;;;;;;;;;;;;;;;;;;;AAK1B"}},
+    {"offset": {"line": 57, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/fermi/Documents/PerfuChic/PerfuQuiz/web-app-instructions/components/Layout/Footer.js"],"sourcesContent":["\"use client\"\n\nexport default function Footer() {\n  return (\n    <footer className=\"footer\">\n      <p className=\"footer__text\">© {new Date().getFullYear()} Perfuchic · Diagnóstico Capilar Personalizado</p>\n    </footer>\n  )\n}\n"],"names":[],"mappings":";;;;;AAAA;;AAEe,SAAS;IACtB,qBACE,mTAAC;QAAO,WAAU;kBAChB,cAAA,mTAAC;YAAE,WAAU;;gBAAe;gBAAG,IAAI,OAAO,WAAW;gBAAG;;;;;;;;;;;;AAG9D"}}]
+}
