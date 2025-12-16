@@ -10,7 +10,7 @@
  * @param {Object} payload - Objeto con las respuestas del formulario
  * @returns {Promise<Object>} - Respuesta del servidor
 */
-const BACKEND_URL = "http://localhost:4000/api/diagnostico"
+const BACKEND_URL = "https://perfuquiz-back-production.up.railway.app/api/diagnostico"
 
 export async function sendToBackend(payload) {
   // Log del payload para desarrollo
