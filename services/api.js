@@ -4,27 +4,55 @@
  */
 
 /**
- * Envía el payload del formulario al backend
+ 
+/**
+ * Envía el payload del formulario al backend real
  * @param {Object} payload - Objeto con las respuestas del formulario
- * @returns {Promise<Object>} - Respuesta simulada del servidor
- */
+ * @returns {Promise<Object>} - Respuesta del servidor
+*/
+const BACKEND_URL = "http://localhost:4000/api/diagnostico"
+
 export async function sendToBackend(payload) {
   // Log del payload para desarrollo
   console.log("=== PAYLOAD ENVIADO AL BACKEND ===")
   console.log(JSON.stringify(payload, null, 2))
   console.log("==================================")
 
-  // Simular latencia de red
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({
-        success: true,
-        message: "Diagnóstico recibido correctamente",
-        timestamp: new Date().toISOString(),
-        payload: payload,
-      })
-    }, 1500)
-  })
+  try {
+    const response = await fetch(BACKEND_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+
+    // Si el backend responde con error (400, 500, etc.)
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}))
+      console.error("Error HTTP desde backend:", errorData)
+      return {
+        success: false,
+        error: errorData.error || "Error al comunicarse con el backend",
+      }
+    }
+
+    // Parsear JSON de la respuesta
+    const data = await response.json()
+
+    console.log("=== RESPUESTA DEL BACKEND ===")
+    console.log(JSON.stringify(data, null, 2))
+    console.log("=============================")
+
+    return data
+  } catch (error) {
+    // Error de red, CORS, backend caído, etc.
+    console.error("Error en sendToBackend:", error)
+    return {
+      success: false,
+      error: error.message || "Error de red al llamar al backend",
+    }
+  }
 }
 
 /**
