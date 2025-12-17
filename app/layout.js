@@ -6,7 +6,12 @@ import Footer from "../components/Layout/Footer"
 export const metadata = {
   title: "Perfuchic - Diagnóstico Capilar",
   description: "Descubrí tu tipo de cabello y recibí recomendaciones personalizadas para tu rutina capilar.",
-    generator: 'v0.app'
+  generator: 'v0.app',
+  icons: {
+    icon: "/favicon-perfuchic.png",
+    shortcut: "/favicon-perfuchic.png",
+    apple: "/favicon-perfuchic.png",
+  },
 }
 
 export default function RootLayout({ children }) {

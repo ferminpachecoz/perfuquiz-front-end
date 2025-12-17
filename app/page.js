@@ -1,8 +1,14 @@
 "use client"
-
 import Link from "next/link"
+import { pushEvent } from "@/lib/gtm.js"
 
 export default function Home() {
+  const handleStart = () => {
+    pushEvent("start_diagnostico", {
+      page: "home",
+      destination: "/formulario",
+    })
+  }
   return (
     <div className="container">
       <div className="home">
@@ -35,7 +41,11 @@ export default function Home() {
         </div>
 
         <div className="home__cta">
-          <Link href="/formulario" className="btn btn--primary btn--large">
+          <Link 
+            href="/formulario" 
+            className="btn btn--primary btn--large"
+            onClick={handleStart}
+          >
             Comenzar diagnóstico
           </Link>
         </div>

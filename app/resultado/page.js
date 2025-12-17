@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
+import { pushEvent } from "@/lib/gtm.js"
 
 function prettyLabel(value) {
   if (!value || typeof value !== "string") return "N/D"
@@ -24,6 +25,14 @@ export default function ResultadoPage() {
 
   const [backendResponse, setBackendResponse] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
+
+  const handleClickEcommerce = () => {
+    pushEvent("click_ver_productos_recomendados", {
+      page: "resultado",
+      outbound: true,
+      destination: "https://www.perfuchic.com.ar",
+    })
+  }
 
   useEffect(() => {
     if (typeof window === "undefined") return
@@ -275,6 +284,7 @@ export default function ResultadoPage() {
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn--cta"
+              onClick={handleClickEcommerce}
             >
               Ver productos recomendados para mi cabello
             </a>

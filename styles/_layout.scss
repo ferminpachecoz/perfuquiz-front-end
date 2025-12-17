@@ -61,6 +61,10 @@ body {
     font-weight: 600;
     color: $color-primary-dark;
     letter-spacing: -0.5px;
+    img{
+      width: 200px;
+      height: auto;
+    }
     
     span {
       font-weight: 400;

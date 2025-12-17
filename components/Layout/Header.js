@@ -7,7 +7,7 @@ export default function Header() {
     <header className="header">
       <div className="header__content">
         <Link href="/" className="header__logo">
-          Perfuchic <span>Diagnóstico Capilar</span>
+          <img src="/logo-perfuchic.png" alt="Logo de la empresa" />
         </Link>
       </div>
     </header>

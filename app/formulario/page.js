@@ -8,6 +8,7 @@ import StepPorosidad from "../../components/Form/StepPorosidad"
 import StepCueroCabelludo from "../../components/Form/StepCueroCabelludo"
 import StepEstadoDanio from "../../components/Form/StepEstadoDanio"
 import { buildPayload, sendToBackend } from "../../services/api"
+import { pushEvent } from "@/lib/gtm.js"
 
 const TOTAL_STEPS = 4
 
@@ -90,6 +91,12 @@ export default function FormularioPage() {
       // Guardar en sessionStorage para la página de resultado
       sessionStorage.setItem("diagnosticoPayload", JSON.stringify(payload))
       sessionStorage.setItem("diagnosticoResponse", JSON.stringify(response))
+
+      pushEvent("finish_diagnostico", {
+        page: "formulario",
+        destination: "/resultado",
+        total_steps: TOTAL_STEPS,
+      })
 
       router.push("/resultado")
     } catch (error) {
