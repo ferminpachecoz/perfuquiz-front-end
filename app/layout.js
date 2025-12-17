@@ -2,6 +2,7 @@ import "../styles/main.scss"
 import "./globals.css"
 import Header from "../components/Layout/Header"
 import Footer from "../components/Layout/Footer"
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata = {
   title: "Perfuchic - Diagnóstico Capilar",
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <body>
+        <Analytics/>
         <div className="app-container">
           <Header />
           <main className="main-content">{children}</main>

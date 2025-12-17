@@ -2,6 +2,7 @@
 import Link from "next/link"
 import { pushEvent } from "@/lib/gtm.js"
 
+
 export default function Home() {
   const handleStart = () => {
     pushEvent("start_diagnostico", {
